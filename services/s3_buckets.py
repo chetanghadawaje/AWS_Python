@@ -1,9 +1,13 @@
 import logging
+
 import boto3
 from botocore.exceptions import ClientError
+from django.conf import settings
+
+AWS_REGION_NAME = settings.AWS_REGION_NAME
 
 
-def create_bucket(bucket_name, region=None):
+def create_bucket(bucket_name, region=AWS_REGION_NAME):
     """Create an S3 bucket in a specified region
 
     If a region is not specified, the bucket is created in the S3 default
