@@ -1,13 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <table class="table">
-      <tbody>
-      {% for name in services_list %}
-        <tr>
-          <a href="">{{name}}</a>
-        </tr>
+
+      {% for name, url in services_list.items %}
+          <a href="{{ url }}">{{name}}</a>
+        <br>
       {% endfor %}
-      </tbody>
-    </table>
+
 {% endblock content %}
