@@ -7,7 +7,7 @@ from services.utils import get_bucket_name_date
 
 
 def services(request):
-    services_list = {'S3 List': reverse('buckets'), 'Upload File on S3': reverse('upload_file'), "Swap File on S3": reverse('swap_file')}
+    services_list = {'S3 List': reverse('buckets'), 'Upload File on S3': reverse('upload_file')}
     return render(request, 'services.html', {'page_name': 'Services', 'services_list': services_list})
 
 
@@ -24,5 +24,4 @@ def buckets(request):
             error_msg = "Form is not valid."
     bucket = lists_bucket()
     bucket = get_bucket_name_date(bucket)
-    print(bucket)
     return render(request, 'buckets.html', {'page_name': 'Bucket', 'list': bucket, 'form': form, 'error_msg': error_msg})

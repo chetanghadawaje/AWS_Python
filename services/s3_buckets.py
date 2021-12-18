@@ -3,7 +3,7 @@ import logging
 from botocore.exceptions import ClientError
 from django.conf import settings
 
-from services import client_s3
+from services import client_s3, resource_s3
 
 AWS_REGION_NAME = settings.AWS_REGION_NAME
 AWS_SERVER_SECRET_KEY = settings.AWS_SERVER_SECRET_KEY
@@ -48,6 +48,16 @@ def lists_bucket():
 
 
 def lists_file_on_s3(bucket_name):
-    my_bucket = client_s3.Bucket(bucket_name)
-    file = my_bucket.objects.all()
-    return file
+    """
+    bucket_name: str
+    """
+    assert type(bucket_name) == str
+    files = list()
+    try:
+        my_bucket = resource_s3.Bucket(bucket_name)
+        obj_bucket = my_bucket.objects.all()
+        for bucket in obj_bucket:
+            files.append(bucket.__dict__['meta'].data)
+    except Exception as e:
+        logging.exception(f"Exception in lists_file_on_s3: {e}")
+    return files

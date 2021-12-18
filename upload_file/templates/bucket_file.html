@@ -2,9 +2,14 @@
 
 {% block content %}
     <div class="container justify-content-md-center">
-        <h1>Swap File</h1>
+        <h1>Bucket: {{ page_name }}</h1>
             {% if msg %}
                 {{ msg }}
             {% endif %}
+
+        {% for data in lists %}
+            <a href="">{{data.Key}}</a> {{data.LastModified}}
+            <br>
+      {% endfor %}
     </div>
 {% endblock content %}

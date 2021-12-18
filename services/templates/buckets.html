@@ -5,7 +5,7 @@
     {% if error_msg %}
         {{ error_msg }}
     {% endif %}
-    <form action="/services/buckets/" method="post">
+    <form action="{% url 'buckets' %}" method="post">
         {% csrf_token %}
         {% for field in form %}
             <div class="form-group">
@@ -16,7 +16,7 @@
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
       {% for data in list %}
-        <a href="">{{data.Name}}</a> {{data.CreationDate}}
+        <a href="{% url 'bucket_file' data.Name %}">{{data.Name}}</a> {{data.CreationDate}}
         <br>
       {% endfor %}
 
