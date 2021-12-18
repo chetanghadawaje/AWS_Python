@@ -18,6 +18,6 @@ from services.views import services
 
 urlpatterns = [
     path('', services, name='services'),
-    path('upload_file/', include('upload_file.urls')),
+    path('file/', include('upload_file.urls')),
     path('services/', include('services.urls')),
 ]

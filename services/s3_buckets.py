@@ -1,6 +1,5 @@
 import logging
 
-import boto3
 from botocore.exceptions import ClientError
 from django.conf import settings
 
@@ -21,8 +20,6 @@ def create_bucket(bucket_name):
     :param region: String region to create bucket in, e.g., 'us-west-2'
     :return: True if bucket created, else False
     """
-
-    # Create bucket
     try:
         location = {'LocationConstraint': AWS_REGION_NAME}
         client_s3.create_bucket(Bucket=bucket_name, CreateBucketConfiguration=location)
@@ -48,3 +45,9 @@ def lists_bucket():
 
     logging.info(f"Bucket List: {response}")
     return response
+
+
+def lists_file_on_s3(bucket_name):
+    my_bucket = client_s3.Bucket(bucket_name)
+    file = my_bucket.objects.all()
+    return file

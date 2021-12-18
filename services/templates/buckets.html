@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+    <h1>S3 Buckets</h1>
     {% if error_msg %}
         {{ error_msg }}
     {% endif %}
@@ -15,9 +16,7 @@
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
       {% for data in list %}
-        {% for key, value in data.items %}
-            {{ value }}
-        {% endfor %}
+        <a href="">{{data.Name}}</a> {{data.CreationDate}}
         <br>
       {% endfor %}
 
