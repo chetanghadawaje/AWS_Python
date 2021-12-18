@@ -61,3 +61,17 @@ def lists_file_on_s3(bucket_name):
     except Exception as e:
         logging.exception(f"Exception in lists_file_on_s3: {e}")
     return files
+
+
+def delete_bucket_on_s3(bucket_name):
+    """
+        bucket_name: str
+    """
+    flag = True
+    try:
+        bucket = resource_s3.Bucket(bucket_name)
+        bucket.delete()
+    except Exception as e:
+        flag = False
+        logging.exception(f"Exception in delete_bucket: {e}")
+    return flag
