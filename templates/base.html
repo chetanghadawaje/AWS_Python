@@ -5,25 +5,23 @@
     <meta charset="UTF-8">
     <title>
         {% if page_name %}
-            {{ page_name }}
+        {{ page_name }}
         {% else %}
-            AWS Services
+        AWS Services
         {% endif %}
     </title>
 </head>
-<body style="background: black; color: white;">
-<div>
-    <a href="/" style="margin: 3%;">Home</a>
-</div>
-<div class="container">
-  <div class="panel panel-default px-md-5">
-    <div class="panel-body">
-        {% block content %}
-        {% endblock content %}
-    </div>
-  </div>
-</div>
-</body>
+<body style="margin: 3%">
+<h4>
+    <a href="/" class="badge badge-success">Home</a>
+    {% if detail_name %}
+        <span class="badge badge-pill badge-danger">{{detail_name}}</span>
+    {% endif %}
+</h4>
+{% block content %}
+
+{% endblock content %}
+
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

@@ -24,4 +24,5 @@ def buckets(request):
             error_msg = "Form is not valid."
     bucket = lists_bucket()
     bucket = get_bucket_name_date(bucket)
-    return render(request, 'buckets.html', {'page_name': 'Bucket', 'list': bucket, 'form': form, 'error_msg': error_msg})
+    return render(request, 'buckets.html', {'page_name': 'Bucket', 'list': bucket, 'form': form, 'error_msg': error_msg,
+                                            'detail_name': "S3 Buckets"})

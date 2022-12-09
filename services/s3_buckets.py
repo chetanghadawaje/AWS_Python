@@ -10,7 +10,7 @@ AWS_SERVER_SECRET_KEY = settings.AWS_SERVER_SECRET_KEY
 AWS_ACCESS_KEY_ID = settings.AWS_ACCESS_KEY_ID
 
 
-def create_bucket(bucket_name):
+def create_bucket(bucket_name: str) -> dict:
     """Create an S3 bucket in a specified region
 
     If a region is not specified, the bucket is created in the S3 default
@@ -29,7 +29,7 @@ def create_bucket(bucket_name):
     return {"Message": "Bucket created.", "Code": 200}
 
 
-def lists_bucket():
+def lists_bucket() -> dict:
     """
     Retrieve the list of existing buckets
     """
@@ -47,11 +47,10 @@ def lists_bucket():
     return response
 
 
-def lists_file_on_s3(bucket_name):
+def lists_file_on_s3(bucket_name: str) -> list:
     """
     bucket_name: str
     """
-    assert type(bucket_name) == str
     files = list()
     try:
         my_bucket = resource_s3.Bucket(bucket_name)
@@ -63,7 +62,7 @@ def lists_file_on_s3(bucket_name):
     return files
 
 
-def delete_bucket_on_s3(bucket_name):
+def delete_bucket_on_s3(bucket_name: str) -> bool:
     """
         bucket_name: str
     """

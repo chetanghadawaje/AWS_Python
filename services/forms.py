@@ -3,7 +3,8 @@ from django.core.exceptions import ValidationError
 
 
 class BucketForm(forms.Form):
-    bucket_name = forms.CharField(label='Bucket Name', max_length=20)
+    bucket_name = forms.CharField(label='Bucket Name', max_length=20,
+                                  widget=forms.TextInput(attrs={'class': 'form-control'}))
 
     # def clean_bucket_name(self):
     #     cleaned_data = super().clean()
