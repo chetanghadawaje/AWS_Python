@@ -1,15 +1,26 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div class="container justify-content-md-center">
-        <h1>Bucket: {{ page_name }}</h1>
-            {% if msg %}
-                {{ msg }}
-            {% endif %}
+    <h3>Bucket: <span class="badge badge-info">{{ page_name }}</span></h3>
+        {% if msg %}
+            {{ msg }}
+        {% endif %}
 
-        {% for data in lists %}
-            <a href="">{{data.Key}}</a> {{data.LastModified}}
-            <br>
+    <table class="table" style="margin-top: 3%">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Last modify Date & Time</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for data in lists %}
+        <tr>
+            <td scope="row">{{data.Key}}</td>
+            <td>{{data.LastModified}}</td>
+        </tr>
       {% endfor %}
-    </div>
+      </tbody>
+    </table>
+
 {% endblock content %}

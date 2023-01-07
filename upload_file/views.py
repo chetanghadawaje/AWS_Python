@@ -17,12 +17,14 @@ def upload_file_s3(request):
             msg = "File Upload Successfully."
         else:
             msg = "File Upload Unsuccessfully."
-    return render(request, 'upload_file.html', {'page_name': 'Bucket', 'form': form, 'msg': msg, 'bucket': bucket})
+    return render(request, 'upload_file.html', {'page_name': 'Bucket', 'form': form, 'msg': msg, 'bucket': bucket,
+                                                'detail_name': "Upload File in S3 Bucket"})
 
 
 def bucket_file(request, bucket_name):
     lists_file = lists_file_on_s3(bucket_name)
-    return render(request, 'bucket_file.html', {'page_name': bucket_name, 'lists': lists_file})
+    return render(request, 'bucket_file.html', {'page_name': bucket_name, 'lists': lists_file,
+                                                'detail_name': "Buckets Details"})
 
 
 def delete_bucket(request, bucket_name):

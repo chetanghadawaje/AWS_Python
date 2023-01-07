@@ -1,28 +1,25 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div class="container justify-content-md-center">
-        <h1>Upload File</h1>
-            {% if msg %}
-                {{ msg }}
-            {% endif %}
-        <form action="/" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            {% for data in bucket %}
-            <div class="form-check">
-                  <input class="form-check-input" type="radio" name="bucket_name" id="id_{{ data.Name }}" value="option1">
-                  <label class="form-check-label" for="id_{{ data.Name }}">
-                    {{ data.Name }}
-                  </label>
-            </div>
-            {% endfor %}
-            {% for field in form %}
-            <div class="form-group">
-                <label for="{{ field.name}}" style="m">{{ field.label}}</label>:
-                {{ field }}
-            </div>
-            {% endfor %}
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+{% if msg %}
+    {{ msg }}
+{% endif %}
+<form action="/" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% for data in bucket %}
+    <div class="form-check">
+          <input class="form-check-input" type="radio" name="bucket_name" id="id_{{ data.Name }}" value="option1">
+          <label class="form-check-label" for="id_{{ data.Name }}">
+            {{ data.Name }}
+          </label>
     </div>
+    {% endfor %}
+    {% for field in form %}
+    <div class="form-group">
+        <label for="{{ field.name}}" style="m">{{ field.label}}</label>:
+        {{ field }}
+    </div>
+    {% endfor %}
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
 {% endblock content %}
