@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aws-python-deployment
+  labels:
+    app: aws-python
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: aws-python
+  template:
+    metadata:
+      labels:
+        app: aws-python
+    spec:
+      containers:
+      - name: aws-python
+        image: aws-python
+        ports:
+        - containerPort: 8000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: aws-python-service
+spec:
+  type: NodePort
+  selector:
+    app: aws-python
+  ports:
+    - protocol: TCP
+      port: 8000
+      targetPort: 8000
+      nodePort: 31000
